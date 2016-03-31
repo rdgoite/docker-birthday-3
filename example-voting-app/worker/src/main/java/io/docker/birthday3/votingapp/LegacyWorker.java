@@ -5,7 +5,7 @@ import redis.clients.jedis.exceptions.JedisConnectionException;
 import java.sql.*;
 import org.json.JSONObject;
 
-class Worker {
+class LegacyWorker {
   public static void doWork(String[] args) {
     try {
       Jedis redis = connectToRedis("redis");
