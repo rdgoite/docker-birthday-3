@@ -1,4 +1,4 @@
-package worker;
+package io.docker.birthday3.votingapp;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisConnectionException;

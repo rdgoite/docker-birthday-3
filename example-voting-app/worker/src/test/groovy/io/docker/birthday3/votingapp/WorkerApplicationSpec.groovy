@@ -1,4 +1,4 @@
-package io.docker.votingapp
+package io.docker.birthday3.votingapp
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationConfiguration

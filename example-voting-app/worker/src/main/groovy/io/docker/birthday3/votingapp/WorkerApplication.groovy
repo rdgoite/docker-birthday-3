@@ -1,4 +1,4 @@
-package io.docker.votingapp
+package io.docker.birthday3.votingapp
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
