@@ -1,4 +1,4 @@
-package io.docker.birthday3.votingapp
+package io.docker.birthday3.votingapp.worker
 
 import static org.mockito.Matchers.*
 
