@@ -1,12 +1,25 @@
 package io.docker.birthday3.votingapp
 
+import static org.mockito.Matchers.*
+
+import static org.mockito.Mockito.*
+
+import io.docker.birthday3.votingapp.worker.MockApplicationConfiguration
 import io.docker.birthday3.votingapp.worker.Worker
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.SpringApplicationConfiguration
 import org.springframework.data.redis.core.ListOperations
 import org.springframework.data.redis.core.StringRedisTemplate
 import spock.lang.Specification
 
-
+@SpringApplicationConfiguration([MockApplicationConfiguration])
 class WorkerSpec extends Specification {
+
+    @Autowired
+    StringRedisTemplate voteTemplate
+
+    @Autowired
+    Worker worker
 
     void "Transfer data"() {
         given:
@@ -14,20 +27,13 @@ class WorkerSpec extends Specification {
         1 * listOperations.leftPop(_ as String) >> '{"vote_id": "738a9f", "vote": "Groovy"}'
 
         and:
-        StringRedisTemplate voteTemplate = Mock()
-        1 * voteTemplate.opsForList() >> listOperations
+        doReturn(listOperations).when(voteTemplate).opsForList()
 
-        and:
-        Worker worker = new Worker(voteTemplate: voteTemplate)
-
-        expect:
+        when:
         worker.work()
 
-        //then:
-        //voteTemplate.opsForList()
-        //1 * voteTemplate.opsForList()
-        //1 * listOperations.leftPop('votes')
-        //voteTemplate.opsForList()
+        then:
+        { verify(voteTemplate).opsForList() }
     }
 
 }
