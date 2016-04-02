@@ -1,12 +1,12 @@
-package worker;
+package io.docker.birthday3.votingapp;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 import java.sql.*;
 import org.json.JSONObject;
 
-class Worker {
-  public static void main(String[] args) {
+class LegacyWorker {
+  public static void doWork(String[] args) {
     try {
       Jedis redis = connectToRedis("redis");
       Connection dbConn = connectToDB("db");
