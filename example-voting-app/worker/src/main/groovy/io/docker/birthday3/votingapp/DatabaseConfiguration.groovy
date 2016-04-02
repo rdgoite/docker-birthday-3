@@ -14,7 +14,7 @@ class DatabaseConfiguration {
 
     @Bean
     RedisConnectionFactory redisConnectionFactory() {
-        JedisConnectionFactory connectionFactory = JedisConnectionFactory()
+        JedisConnectionFactory connectionFactory = new JedisConnectionFactory()
         connectionFactory.hostName = 'redis'
         connectionFactory.usePool = true
         return connectionFactory
