@@ -44,9 +44,10 @@ dependencies {
 
     compile 'org.json:json:20140107'
     compile 'redis.clients:jedis:2.7.2'
-    compile('org.postgresql:postgresql:9.4-1208') {
+    compile('org.postgresql:postgresql:9.4.1208') {
         exclude(module: 'slf4j-simple')
     }
+    compile 'com.h2database:h2'
 
     testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
     testCompile('org.springframework.boot:spring-boot-starter-test')
