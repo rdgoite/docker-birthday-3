@@ -1,16 +1,13 @@
 package io.docker.birthday3.votingapp.worker
 
-import static org.mockito.Matchers.*
-
-import static org.mockito.Mockito.*
-
-import io.docker.birthday3.votingapp.worker.MockApplicationConfiguration
-import io.docker.birthday3.votingapp.worker.Worker
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationConfiguration
 import org.springframework.data.redis.core.ListOperations
 import org.springframework.data.redis.core.StringRedisTemplate
 import spock.lang.Specification
+
+import static org.mockito.Mockito.doReturn
+import static org.mockito.Mockito.verify
 
 @SpringApplicationConfiguration([MockApplicationConfiguration])
 class WorkerSpec extends Specification {

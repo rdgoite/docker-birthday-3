@@ -1,4 +1,4 @@
-package io.docker.birthday3.votingapp
+package io.docker.birthday3.votingapp.worker
 
 import io.docker.birthday3.votingapp.worker.Vote
 import org.springframework.context.annotation.Bean
