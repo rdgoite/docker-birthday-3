@@ -13,7 +13,7 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 
 @Configuration
-class DatabaseConfiguration {
+class RedisConfiguration {
 
     @Bean
     ObjectMapper objectMapper() {
