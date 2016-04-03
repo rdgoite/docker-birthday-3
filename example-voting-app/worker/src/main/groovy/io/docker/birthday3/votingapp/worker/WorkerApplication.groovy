@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 @SpringBootApplication
 class WorkerApplication {
 
-   static void main(String[] args) {
-      SpringApplication.run WorkerApplication, args
-   }
+    static void main(String[] args) {
+        SpringApplication.run WorkerApplication, args
+    }
 
 }
