@@ -17,7 +17,7 @@ class Worker {
     @Autowired
     ObjectMapper objectMapper
 
-    void work() {
+    void transferVote() {
         String voteData = voteTemplate.opsForList().leftPop('votes')
         Vote vote = objectMapper.readValue(voteData, Vote)
         voteRepository.save(vote)

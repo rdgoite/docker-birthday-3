@@ -51,7 +51,7 @@ class WorkerSpec extends Specification {
         }).when(voteRepository).save(any(Vote))
 
         when:
-        worker.work()
+        worker.transferVote()
 
         then:
         ({ verify(voteTemplate).opsForList(); true }).call()
