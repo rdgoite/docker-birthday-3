@@ -22,7 +22,9 @@ services:
       - back-tier
 
   worker:
-    image: manomarks/worker
+    build: ./worker/.
+    volumes:
+      - ./worker:/usr/local/src/java
     networks:
       - back-tier
 
