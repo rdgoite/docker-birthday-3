@@ -27,7 +27,7 @@ class WorkerSpec extends Specification {
     @Autowired
     Worker worker
 
-    void "Transfer data"() {
+    void "Transfer vote"() {
         given:
         final String voterId = '738a9f'
         final String vote = 'Groovy'
