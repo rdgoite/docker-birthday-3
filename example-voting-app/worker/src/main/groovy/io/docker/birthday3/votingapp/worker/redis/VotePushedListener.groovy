@@ -16,6 +16,9 @@ class VotePushedListener implements MessageListener {
 
     @Override
     void onMessage(Message message, byte[] pattern) {
-        worker.transferVote()
+        String eventList = new String(message.body)
+        if (list.equalsIgnoreCase(eventList)) {
+            worker.transferVote()
+        }
     }
 }
