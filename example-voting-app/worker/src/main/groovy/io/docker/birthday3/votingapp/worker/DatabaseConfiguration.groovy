@@ -1,5 +1,6 @@
-package io.docker.birthday3.votingapp
+package io.docker.birthday3.votingapp.worker
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import io.docker.birthday3.votingapp.worker.Vote
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -11,6 +12,11 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 
 @Configuration
 class DatabaseConfiguration {
+
+    @Bean
+    ObjectMapper objectMapper() {
+        return new ObjectMapper()
+    }
 
     @Bean
     RedisConnectionFactory redisConnectionFactory() {

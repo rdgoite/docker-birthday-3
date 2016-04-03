@@ -35,19 +35,23 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.springframework.data:spring-data-redis'
+
     compile 'org.codehaus.groovy:groovy-all:2.4.3'
 
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.5'
 
     compile 'org.json:json:20140107'
     compile 'redis.clients:jedis:2.7.2'
-    compile('org.postgresql:postgresql:9.4-1200-jdbc41') {
+    compile('org.postgresql:postgresql:9.4.1208') {
         exclude(module: 'slf4j-simple')
     }
+    compile 'com.h2database:h2'
 
     testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile 'cglib:cglib-nodep:2.2.2'
 }
 
 task wrapper(type: Wrapper) {
