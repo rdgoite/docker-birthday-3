@@ -4,11 +4,13 @@ import org.mockito.invocation.InvocationOnMock
 import org.mockito.stubbing.Answer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.SpringApplicationConfiguration
+import org.springframework.data.redis.core.BoundListOperations
 import org.springframework.data.redis.core.ListOperations
 import org.springframework.data.redis.core.StringRedisTemplate
 import spock.lang.Specification
 
 import static org.mockito.Matchers.any
+import static org.mockito.Matchers.anyString
 import static org.mockito.Mockito.doAnswer
 import static org.mockito.Mockito.doReturn
 import static org.mockito.Mockito.verify
@@ -31,11 +33,12 @@ class WorkerSpec extends Specification {
         final String vote = 'Groovy'
 
         and:
-        ListOperations listOperations = Mock()
-        1 * listOperations.leftPop(_ as String) >> /{"voter_id": "${voterId}", "vote": "${vote}"}/
+
+        BoundListOperations listOperations = Mock()
+        1 * listOperations.leftPop() >> /{"voter_id": "${voterId}", "vote": "${vote}"}/
 
         and:
-        doReturn(listOperations).when(voteTemplate).opsForList()
+        doReturn(listOperations).when(voteTemplate).boundListOps('votes')
 
         and:
         doAnswer(new Answer() {
@@ -54,7 +57,7 @@ class WorkerSpec extends Specification {
         worker.transferVote()
 
         then:
-        ({ verify(voteTemplate).opsForList(); true }).call()
+        ({ verify(voteTemplate).boundListOps(anyString()); true }).call()
         ({ verify(voteRepository).save(any(Vote)); true }).call()
     }
 
